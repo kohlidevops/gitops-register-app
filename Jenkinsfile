@@ -11,13 +11,13 @@ pipeline {
             }
         }
 
-        stage("Checkout from SCM") {
+        stage("Git Checkout") {
                steps {
                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/kohlidevops/gitops-register-app'
                }
         }
 
-        stage("Update the Deployment Tags") {
+        stage("Docker Image Tag updation") {
             steps {
                 sh """
                    cat deployment.yaml
@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        stage("Push the changed deployment file to Git") {
+        stage("Deployment changes to K8 Repository") {
             steps {
                 sh """
                    git config --global user.name "kohlidevops"

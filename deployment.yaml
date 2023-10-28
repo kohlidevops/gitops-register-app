@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: register-app
-          image: latchudevops/myapp-pipeline:latest
+          image: latchudevops/myapp-pipeline:1.0.0-11
           resources:
             limits:
               memory: "256Mi"

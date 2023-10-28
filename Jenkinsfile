@@ -1,7 +1,7 @@
 pipeline {
     agent { label "jenkins-agent" }
     environment {
-              APP_NAME = "register-app-pipeline"
+              APP_NAME = "myapp-pipeline"
     }
 
     stages {
@@ -35,7 +35,7 @@ pipeline {
                    git add deployment.yaml
                    git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'github-login', gitToolName: 'Default')]) {
+                withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
                   sh "git push https://github.com/kohlidevops/gitops-register-app main"
                 }
             }
